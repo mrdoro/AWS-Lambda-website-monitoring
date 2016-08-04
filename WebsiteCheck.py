@@ -19,6 +19,12 @@ def lambda_handler(event, context):
                 LogType='Tail',
                 Payload=json.dumps({"VAL": 100,"MNAM": metriname}) 
             )
+            response=client.invoke(
+                FunctionName='RepairSystem',
+                InvocationType='Event',
+                LogType='Tail',
+                Payload=json.dumps({"MNAM": metriname})
+            )
     else:
         c=httplib.HTTPConnection(websiteurl) #for ssl use httplib.HTTPSConnection.
     	c.request("HEAD", '')
@@ -36,4 +42,10 @@ def lambda_handler(event, context):
                 InvocationType='Event',
                 LogType='Tail',
                 Payload=json.dumps({"VAL": 50,"MNAM": metriname}) 
+            )
+            response=client.invoke(
+                FunctionName='RepairSystem',
+                InvocationType='Event',
+                LogType='Tail',
+                Payload=json.dumps({"MNAM": metriname})
             )
